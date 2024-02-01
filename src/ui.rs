@@ -16,11 +16,7 @@ impl Plugin for UiPlugin {
 #[derive(Component)]
 pub struct UiTurnText;
 
-pub fn setup_ui(
-    mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    game_turn: Res<GameTurn>,
-) {
+pub fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>, game_turn: Res<GameTurn>) {
     commands.spawn((
         UiTurnText,
         TextBundle::from_section(

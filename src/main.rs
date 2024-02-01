@@ -144,11 +144,7 @@ fn initialize_map(
             r#type: tile.clone(),
             position: tile_position,
             sprite: SpriteSheetBundle {
-                transform: Transform::from_xyz(
-                    sprite_x,
-                    sprite_y,
-                    Z_INDEX_TILE,
-                ),
+                transform: Transform::from_xyz(sprite_x, sprite_y, Z_INDEX_TILE),
                 sprite: TextureAtlasSprite::new(TileType::to_sprite_idx(tile)),
                 texture_atlas: tileset.0.clone(),
                 ..Default::default()
@@ -164,7 +160,6 @@ fn initialize_map(
 pub fn calculate_sprite_position(map_position: &MapPosition) -> (f32, f32) {
     (
         map_position.x as f32 * SPRITE_TILE_WIDTH + SPRITE_TILE_WIDTH / 2.0,
-        -1f32 * map_position.y as f32 * SPRITE_TILE_HEIGHT
-            - SPRITE_TILE_HEIGHT / 2.0,
+        -1f32 * map_position.y as f32 * SPRITE_TILE_HEIGHT - SPRITE_TILE_HEIGHT / 2.0,
     )
 }

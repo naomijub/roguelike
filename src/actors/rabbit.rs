@@ -11,11 +11,7 @@ pub struct RabbitBundle {
     pub sprite: SpriteSheetBundle,
 }
 
-pub fn initialize_rabbits(
-    commands: &mut Commands,
-    map: &Map,
-    tileset: &TilesetMain,
-) {
+pub fn initialize_rabbits(commands: &mut Commands, map: &Map, tileset: &TilesetMain) {
     for _ in 0..3 {
         let map_position = map.generate_random_spawning_position();
         let (sprite_x, sprite_y) = calculate_sprite_position(&map_position);
@@ -24,11 +20,7 @@ pub fn initialize_rabbits(
             position: map_position,
             sprite: SpriteSheetBundle {
                 texture_atlas: tileset.0.clone(),
-                transform: Transform::from_xyz(
-                    sprite_x,
-                    sprite_y,
-                    Z_INDEX_ACTOR,
-                ),
+                transform: Transform::from_xyz(sprite_x, sprite_y, Z_INDEX_ACTOR),
                 sprite: TextureAtlasSprite::new(SPRITE_IDX_RABBIT),
                 ..Default::default()
             },

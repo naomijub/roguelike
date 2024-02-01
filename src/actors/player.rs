@@ -11,11 +11,7 @@ pub struct PlayerBundle {
     pub sprite: SpriteSheetBundle,
 }
 
-pub fn initialize_player(
-    commands: &mut Commands,
-    map: &Map,
-    tileset: &TilesetMain,
-) {
+pub fn initialize_player(commands: &mut Commands, map: &Map, tileset: &TilesetMain) {
     let map_position = map.generate_random_spawning_position();
     let (sprite_x, sprite_y) = calculate_sprite_position(&map_position);
     commands.spawn(PlayerBundle {
@@ -30,9 +26,7 @@ pub fn initialize_player(
     });
 }
 
-pub fn update_player_sprite(
-    mut query_player: Query<(&mut Transform, &MapPosition), With<Player>>,
-) {
+pub fn update_player_sprite(mut query_player: Query<(&mut Transform, &MapPosition), With<Player>>) {
     let (mut sprite_transform, position_player) = query_player.single_mut();
     let (sprite_x, sprite_y) = calculate_sprite_position(position_player);
     sprite_transform.translation = Vec3::new(sprite_x, sprite_y, Z_INDEX_ACTOR);

@@ -65,9 +65,6 @@ pub fn show_grid(mut commands: Commands, query_map: Query<&Map>) {
     spawn_grid_horizontal_lines(&mut commands, map);
 }
 
-pub fn hide_grid(
-    mut commands: Commands,
-    query_grid_entities: Query<Entity, With<Grid>>,
-) {
+pub fn hide_grid(mut commands: Commands, query_grid_entities: Query<Entity, With<Grid>>) {
     despawn_grid_lines(&mut commands, query_grid_entities.iter().collect());
 }

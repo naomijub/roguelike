@@ -46,8 +46,7 @@ impl CellularAutomaton {
     pub fn transition(&mut self) {
         let mut next_generation = self.cells.clone();
         for (i, c) in self.cells.iter().enumerate() {
-            let alive_neighbors =
-                count_neighbors_in_state(self, i, CellularState::Alive);
+            let alive_neighbors = count_neighbors_in_state(self, i, CellularState::Alive);
 
             next_generation[i] = match c {
                 CellularState::Alive => {
@@ -84,8 +83,7 @@ impl CellularAutomaton {
             let mut next_generation = current_generation.clone();
 
             for (i, c) in current_generation.iter().enumerate() {
-                let alive_neighbors =
-                    count_neighbors_in_state(self, i, CellularState::Alive);
+                let alive_neighbors = count_neighbors_in_state(self, i, CellularState::Alive);
 
                 if c == &CellularState::Dead && alive_neighbors > 3 {
                     next_generation[i] = CellularState::Alive;
@@ -109,10 +107,7 @@ impl CellularAutomaton {
 /// # Returns
 ///
 /// A vector containing flat indexes representing the target cell neighbors.
-pub fn enumerate_neighbors(
-    automaton: &CellularAutomaton,
-    i: usize,
-) -> Vec<usize> {
+pub fn enumerate_neighbors(automaton: &CellularAutomaton, i: usize) -> Vec<usize> {
     let mut neighbors = Vec::new();
     let x = i % automaton.width;
     let y = i / automaton.width;

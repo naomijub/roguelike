@@ -25,11 +25,7 @@ pub fn spawn_tile_coordinate_labels(
                             color: TILE_COORDINATE_LABEL_FONT_COLOR,
                         },
                     ),
-                    transform: Transform::from_xyz(
-                        text_x,
-                        text_y,
-                        Z_INDEX_TILE_COORDINATES,
-                    ),
+                    transform: Transform::from_xyz(text_x, text_y, Z_INDEX_TILE_COORDINATES),
                     ..Default::default()
                 },
             ));
@@ -37,10 +33,7 @@ pub fn spawn_tile_coordinate_labels(
     }
 }
 
-pub fn despawn_tile_coordinate_labels(
-    commands: &mut Commands,
-    label_entities: Vec<Entity>,
-) {
+pub fn despawn_tile_coordinate_labels(commands: &mut Commands, label_entities: Vec<Entity>) {
     for entity in &label_entities {
         commands.entity(*entity).despawn();
     }
@@ -59,8 +52,5 @@ pub fn hide_tile_coordinate_labels(
     mut commands: Commands,
     query_label_entities: Query<Entity, With<TileCoordinateLabel>>,
 ) {
-    despawn_tile_coordinate_labels(
-        &mut commands,
-        query_label_entities.iter().collect(),
-    );
+    despawn_tile_coordinate_labels(&mut commands, query_label_entities.iter().collect());
 }

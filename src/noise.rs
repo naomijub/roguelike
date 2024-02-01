@@ -46,8 +46,7 @@ impl PerlinNoise {
         let grad_aa = grad(self.permutation[aa as usize], x_frac, y_frac);
         let grad_ba = grad(self.permutation[ba as usize], x_frac - 1.0, y_frac);
         let grad_ab = grad(self.permutation[ab as usize], x_frac, y_frac - 1.0);
-        let grad_bb =
-            grad(self.permutation[bb as usize], x_frac - 1.0, y_frac - 1.0);
+        let grad_bb = grad(self.permutation[bb as usize], x_frac - 1.0, y_frac - 1.0);
 
         // Weight the contributions from each corner
         let x1 = lerp(grad_aa, grad_ba, u);

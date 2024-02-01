@@ -12,8 +12,7 @@ impl Plugin for CameraPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(
             Update,
-            (check_camera_zoom, update_camera_position)
-                .run_if(in_state(GameState::PlayerTurn)),
+            (check_camera_zoom, update_camera_position).run_if(in_state(GameState::PlayerTurn)),
         );
     }
 }
@@ -43,10 +42,7 @@ pub fn check_camera_zoom(
 
 pub fn update_camera_position(
     query_player: Query<&MapPosition, With<Player>>,
-    mut query_main_camera: Query<
-        &mut Transform,
-        (With<MainCamera>, Without<Player>),
-    >,
+    mut query_main_camera: Query<&mut Transform, (With<MainCamera>, Without<Player>)>,
 ) {
     let position_player = query_player.single();
     let (sprite_x, sprite_y) = calculate_sprite_position(position_player);
